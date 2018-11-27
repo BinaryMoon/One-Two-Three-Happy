@@ -1,0 +1,102 @@
+// @package Carmack
+
+// font overrides
+$font-family-sans: Georgia, 'Times New Roman', sans-serif;
+$font-family-serif: Georgia, 'Times New Roman', sans-serif;
+//$font-base: 18;
+$font-family-body: $font-family-sans;
+$font-family-header: $font-family-sans;
+//$line-height: 1.5;
+
+// enable/ disable debug features
+$debug: false;
+
+// colours
+$canvas-white: #fff;
+//$canvas-green: #2ECC71;
+//$canvas-green-dark: darken( $canvas-green, 12% );
+$canvas-blue: #0075b3;
+//$canvas-blue-dark: darken( $canvas-blue, 12% );
+//$canvas-red: #E74C3C;
+//$canvas-red-dark: darken( $canvas-red, 12% );
+//$canvas-purple: #9B59B6;
+//$canvas-purple-dark: darken( $canvas-purple, 12% );
+$canvas-yellow: #ff9;
+$canvas-yellow-dark: darken( $canvas-yellow, 12% );
+//$canvas-orange: #E67E22;
+//$canvas-orange-dark: darken( $canvas-orange, 12% );
+
+// greys
+$canvas-grey-100: #000;
+$canvas-grey-90: lighten( $canvas-grey-100, 10% );
+$canvas-grey-80: lighten( $canvas-grey-100, 20% );
+$canvas-grey-70: lighten( $canvas-grey-100, 30% );
+$canvas-grey-60: lighten( $canvas-grey-100, 40% );
+$canvas-grey-50: lighten( $canvas-grey-100, 50% );
+$canvas-grey-40: lighten( $canvas-grey-100, 60% );
+$canvas-grey-30: lighten( $canvas-grey-100, 70% );
+$canvas-grey-20: lighten( $canvas-grey-100, 80% );
+$canvas-grey-10: lighten( $canvas-grey-100, 90% );
+$canvas-grey-5: lighten( $canvas-grey-100, 95% );
+$canvas-grey-1: lighten( $canvas-grey-100, 99% );
+
+// main colour, used through the theme
+$canvas-color: $canvas-yellow;
+
+$link-color: darken( $canvas-blue, 6% );
+
+$border-color: $canvas-grey-90;
+$border-radius: 0;
+
+$form-input-border-color: $canvas-grey-20;
+$form-input-border-focus: $border-color;
+
+$comments-margin: 4%;
+
+$border-width: 2px;
+
+// $body-copy-color: $canvas-grey-60;
+// $body-header-color: $canvas-grey-100;
+
+
+// grid sizes
+//$grid-line-height: $line-height * 1rem;
+$grid-total-width: 90rem;
+//$grid-line-height-multiplier: 1.5;
+//$grid-gutter: 3em;
+$grid-column-gutter: 1 / 3;
+
+// menu properties
+// $menu-link-padding: 1em;
+// $menu-parent-link-vertical-padding: 0;
+// $menu-dropdown-width: 20em;
+
+// default font sizes
+$font-sizes: (
+	// giga: ( size: 6.25rem, height: 1 ),
+	// mega: ( size: 5rem, height: 1.25 ),
+	// alpha: ( size: 4rem, height: 1.25 ),
+	// beta: ( size: 3.25rem, height: 1.25 ),
+	// gamma: ( size: 2.5rem, height: 1.25 ),
+	// delta: ( size: 1.75rem, height: 1.5 ),
+	// epsilon: ( size: 1.25rem, height: 1.5 ),
+	// zeta: ( size: 2rem, height: 1.75 ),
+	// eta: ( size: 0.75rem, height: 1.75 ),
+	// micro: ( size: 0.5rem, height: 1.75 ),
+);
+
+// custom
+$showcase-height: 40%;
+
+// z-index layer positions
+$layer: (
+	under: -1,
+	base: 1,
+	showcase_nav: 10,
+	branding: 20,
+	infinite_footer: 25,
+	menu_dropdown: 30,
+	single_nav: 40,
+	menu_overlay: 50,
+	top: 100000
+);

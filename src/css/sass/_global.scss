@@ -1,0 +1,13 @@
+main {
+
+	display: flex;
+	height: 100vh;
+
+	@include for-phone {
+
+		flex-direction: column;
+		height: auto;
+
+	}
+
+}

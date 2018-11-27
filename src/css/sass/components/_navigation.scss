@@ -1,0 +1,32 @@
+.navigation {
+
+	a {
+
+		display: block;
+		color: black;
+		padding: 1rem;
+		transition: 0.1s ease-in-out;
+
+		&.active,
+		&:hover {
+
+			background: $canvas-yellow;
+
+		}
+
+	}
+
+	@include for-phone {
+
+		display: flex;
+		margin-bottom: $grid-line-height * 2;
+
+		a {
+
+			flex-grow: 1;
+
+		}
+
+	}
+
+}

@@ -1,0 +1,8 @@
+build/
+.vscode/
+node_modules/
+.jshintrc
+security-rules.json
+deploy.sh
+firebase.json
+.firebaserc

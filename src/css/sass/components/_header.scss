@@ -1,0 +1,49 @@
+header {
+
+	max-width: 20rem;
+	width: 100%;
+	padding: $grid-line-height ( $grid-gutter / 2 );
+	background: $canvas-grey-5;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	@include for-phone {
+
+		max-width: 100%;
+
+	}
+
+	.title {
+
+		@include modular-scale( epsilon );
+
+		@include for-phone {
+
+			margin-bottom: $grid-line-height * 2;
+
+		}
+
+	}
+
+	a {
+
+		text-decoration: none;
+		color: black;
+
+		&.active,
+		&:hover {
+
+			text-decoration: underline;
+
+		}
+
+	}
+
+	.about {
+
+		@include modular-scale( eta );
+
+	}
+
+}
