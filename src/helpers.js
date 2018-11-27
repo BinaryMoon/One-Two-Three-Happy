@@ -4,6 +4,7 @@
  * Generic helpful functions that can be used anywhere.
  */
 
+import fecha from "./vendors/fecha";
 
 /**
  * Pick a random item from an array.
@@ -32,5 +33,15 @@ export function slugify( text ) {
 		.replace(/--+/g, "-")
 		.replace(/^-+/, "")
 		.replace(/-+$/, "");
+
+}
+
+
+/**
+ * Get the current date.
+ */
+export function getDate() {
+
+	return fecha.format( new Date(), 'Do MMMM YYYY' );
 
 }
