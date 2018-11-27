@@ -7,9 +7,9 @@ class AddHappyMemories extends React.Component {
 
 		return (
 			<form>
-				<HappyMemory>1.</HappyMemory>
-				<HappyMemory>2.</HappyMemory>
-				<HappyMemory>3.</HappyMemory>
+				<HappyMemory id="memory-1">1.</HappyMemory>
+				<HappyMemory id="memory-2">2.</HappyMemory>
+				<HappyMemory id="memory-3">3.</HappyMemory>
 				<input type="submit" value="Save Happy Memories" />
 			</form>
 		);

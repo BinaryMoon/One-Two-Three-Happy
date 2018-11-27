@@ -8,9 +8,10 @@ class HappyMemory extends React.Component {
 
 		return (
 			<React.Fragment>
-				<label>{this.props.children}</label>
+				<label for={this.props.id}>{this.props.children}</label>
 				<textarea
 					ref={this.textareaRef}
+					id={this.props.id}
 				>
 				</textarea>
 			</React.Fragment>
