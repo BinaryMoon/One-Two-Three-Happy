@@ -6,6 +6,6 @@ This project is my first attempt at building a React app so I am using it as a t
 
 ## SASS
 
-For all of my projects I use a Global SASS library called [__sass](https://github.com/BinaryMoon/__sass). By keeping the code separate I can fix problems in a centralized location.
+For all of my projects I use a Global SASS library called [__sass](https://github.com/BinaryMoon/__sass). By keeping the code separate I can get up and running quickly, and fix problems in a centralized location.
 
-I compile the SASS with Codekit. I could use Gulp/ npm but I find this easier, and one less set of code to maintain.
+I compile the SASS with Codekit. I could use Gulp/ npm but Codekit is much quicker for me.
