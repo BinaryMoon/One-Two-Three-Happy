@@ -45,3 +45,69 @@ export function getDate() {
 	return fecha.format( new Date(), 'Do MMMM YYYY' );
 
 }
+
+
+/**
+ * Get a list of all the memories stored.
+ */
+export function getMemories() {
+
+	let memories = localStorage.getItem( 'memories' );
+
+	if ( memories && memories.length ) {
+		return JSON.parse( memories );
+	}
+
+	return {};
+
+}
+
+
+/**
+ * Get a list of the memories saved for today only.
+ */
+export function getTodaysMemories() {
+
+	let date = slugify( getDate() );
+	let memories = getMemories();
+
+	if ( memories[date] ) {
+		return memories[date];
+	}
+
+	return false;
+
+}
+
+
+/**
+ * Add a new memory.
+ *
+ * @param {object} newMemories 3 new memories for today.
+ */
+export function addMemories( newMemories ) {
+
+	const memories = getMemories();
+	const slug = slugify( getDate() );
+
+	console.log( slug, memories, newMemories );
+
+	memories[ slug ] = newMemories;
+
+	saveMemories( memories );
+
+}
+
+
+/**
+ * Save the current memories state.
+ *
+ * @param {object} memories List of all memories.
+ */
+export function saveMemories( memories ) {
+
+	console.log( memories );
+
+	localStorage.setItem( 'memories', JSON.stringify( memories ) );
+
+}
