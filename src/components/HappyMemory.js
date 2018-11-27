@@ -1,5 +1,9 @@
 import React from "react";
 
+
+/**
+ * A textarea for one of the days three memories.
+ */
 class HappyMemory extends React.Component {
 
 	textareaRef = React.createRef();

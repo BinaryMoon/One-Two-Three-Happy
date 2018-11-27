@@ -1,6 +1,10 @@
 import React from "react";
 import HappyMemory from "./HappyMemory";
 
+
+/**
+ * User input form for entering the days happy memories.
+ */
 class AddHappyMemories extends React.Component {
 
 	render() {
