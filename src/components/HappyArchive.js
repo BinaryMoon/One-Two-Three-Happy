@@ -10,7 +10,7 @@ class HappyArchive extends React.Component {
 	render() {
 
 		return (
-			<div class="content archive">
+			<div className="content archive">
 				<h1>Happy Memories</h1>
 				<Memories />
 			</div>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Header = (props) => (
 	<header>
 
-		<span class="title">
+		<span className="title">
 			<Link to="/">One Two Three Happy</Link>
 		</span>
 

@@ -5,7 +5,7 @@ class Memories extends React.Component {
 	render() {
 
 		return (
-			<div class="memories">Haven't made this yet - but eventually this will list all the memories you have saved.</div>
+			<div className="memories">Haven't made this yet - but eventually this will list all the memories you have saved.</div>
 		);
 
 	}

@@ -10,7 +10,7 @@ class AddHappyMemories extends React.Component {
 	render() {
 
 		return (
-			<form>
+			<form onSubmit={this.props.submitMemories}>
 				<HappyMemory id="memory-1">1.</HappyMemory>
 				<HappyMemory id="memory-2">2.</HappyMemory>
 				<HappyMemory id="memory-3">3.</HappyMemory>

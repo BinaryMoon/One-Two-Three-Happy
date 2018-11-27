@@ -6,7 +6,7 @@ class Navigation extends React.Component {
 	render() {
 
 		return (
-			<nav class="navigation">
+			<nav className="navigation">
 				<NavLink exact className="link-home" to="/">Today</NavLink>
 				<NavLink exact className="link-archive" to="/archive/">Memories</NavLink>
 				<NavLink exact className="link-about" to="/about/">About</NavLink>
