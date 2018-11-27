@@ -797,3 +797,6 @@ main {
     main {
       flex-direction: column;
       height: auto; } }
+
+textarea {
+  min-height: 8rem; }
