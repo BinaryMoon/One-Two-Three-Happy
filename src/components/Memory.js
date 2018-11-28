@@ -12,14 +12,12 @@ class Memory extends React.Component {
 		}
 
 		return (
-			<React.Fragment>
+			<div class="memory">
 				<h3>{ title }</h3>
-				<ul>
-					<li>{ this.props.memories.memory1 }</li>
-					<li>{ this.props.memories.memory2 }</li>
-					<li>{ this.props.memories.memory3 }</li>
-				</ul>
-			</React.Fragment>
+				<p>{ this.props.memories.memory1 }</p>
+				<p>{ this.props.memories.memory2 }</p>
+				<p>{ this.props.memories.memory3 }</p>
+			</div>
 		);
 
 	}
