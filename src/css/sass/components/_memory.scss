@@ -1,0 +1,14 @@
+.memory {
+
+	h3 {
+
+		background: $canvas-red;
+		color: contrast( $canvas-red );
+		@include modular-scale( eta );
+		display: inline-block;
+		padding: 0 0.5em;
+		text-transform: uppercase;
+		letter-spacing: $font-uppercase-spacing;
+
+	}
+}

@@ -185,11 +185,11 @@ textarea {
   vertical-align: top; }
 
 ::-moz-selection {
-  background: #ff9;
+  background: #feeb00;
   color: #000; }
 
 ::selection {
-  background: #ff9;
+  background: #feeb00;
   color: #000; }
 
 address {
@@ -309,7 +309,7 @@ hr {
 
 pre {
   background: #1a1919;
-  color: #2ECC71;
+  color: #a9cf00;
   padding: 1.5rem 1.5rem;
   overflow: auto;
   display: block;
@@ -370,7 +370,7 @@ input.settings-input {
   min-height: 1.5rem;
   width: 100%;
   border-radius: 0;
-  background: #f2f2f2;
+  background: #f2f1f0;
   border: 2px solid #cccccc; }
   .device-click input[type=text], .device-click
   input[type=password], .device-click
@@ -533,7 +533,7 @@ button {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background: #ff9;
+  background: #7fd3f7;
   color: #000;
   display: inline-block;
   text-decoration: none;
@@ -556,7 +556,7 @@ button {
   button:focus,
   button:hover {
     background: #000;
-    color: #ff9;
+    color: #7fd3f7;
     text-decoration: none; }
 
 label {
@@ -751,7 +751,7 @@ header {
   max-width: 20rem;
   width: 100%;
   padding: 1.5rem 1.5rem;
-  background: #f2f2f2;
+  background: #f2f1f0;
   display: flex;
   flex-direction: column;
   justify-content: space-between; }
@@ -775,13 +775,24 @@ header {
     font-size: 0.75rem;
     line-height: 1.75; }
 
+.memory h3 {
+  background: #fb4b3c;
+  color: #fff;
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 1.75;
+  display: inline-block;
+  padding: 0 0.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em; }
+
 .navigation a {
   display: block;
   color: black;
   padding: 1rem;
   transition: 0.1s ease-in-out; }
   .navigation a.active, .navigation a:hover {
-    background: #ff9; }
+    background: #feeb00; }
 
 @media only screen and (max-width: 600px) {
   .navigation {

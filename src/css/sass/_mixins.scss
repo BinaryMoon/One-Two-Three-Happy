@@ -22,7 +22,7 @@
 
 }
 
-@mixin button( $color: $canvas-color, $font-size: zeta ) {
+@mixin button( $color: $canvas-blue, $font-size: zeta ) {
 
 	background: $color;
 	color: contrast( $color );
@@ -41,7 +41,7 @@
 	&:hover {
 
 		background: $canvas-grey-100;
-		color: $canvas-color;
+		color: $color;
 		text-decoration: none;
 
 	}
