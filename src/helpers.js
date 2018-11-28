@@ -90,8 +90,6 @@ export function addMemories( newMemories ) {
 	const memories = getMemories();
 	const slug = slugify( getDate() );
 
-	console.log( slug, memories, newMemories );
-
 	memories[ slug ] = newMemories;
 
 	saveMemories( memories );
@@ -105,8 +103,6 @@ export function addMemories( newMemories ) {
  * @param {object} memories List of all memories.
  */
 export function saveMemories( memories ) {
-
-	console.log( memories );
 
 	localStorage.setItem( 'memories', JSON.stringify( memories ) );
 
