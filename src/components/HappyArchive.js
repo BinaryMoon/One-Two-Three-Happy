@@ -12,7 +12,10 @@ class HappyArchive extends React.Component {
 		return (
 			<div className="content archive">
 				<h1>Happy Memories</h1>
-				<Memories />
+				{/* <Tags></Tags> */}
+				<Memories
+					memories={this.props.memories}
+				/>
 			</div>
 		);
 

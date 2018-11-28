@@ -1,11 +1,24 @@
-import React from "react";
+import React from 'react';
+import Memory from './Memory';
 
 class Memories extends React.Component {
 
 	render() {
 
 		return (
-			<div className="memories">Haven't made this yet - but eventually this will list all the memories you have saved.</div>
+			<React.Fragment>
+			{
+				Object.keys( this.props.memories ).map(
+					key => (
+						<Memory
+							key={key}
+							index={key}
+							memories={this.props.memories[key]}
+						/>
+					)
+				)
+			}
+			</React.Fragment>
 		);
 
 	}
