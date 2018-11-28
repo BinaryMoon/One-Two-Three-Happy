@@ -40,7 +40,11 @@ export function slugify( text ) {
 /**
  * Get the current date.
  */
-export function getDate() {
+export function getDate( date = null ) {
+
+	if ( date === null ) {
+		date = new Date();
+	}
 
 	return fecha.format( new Date(), 'Do MMMM YYYY' );
 
@@ -58,7 +62,9 @@ export function getMemories() {
 		return JSON.parse( memories );
 	}
 
-	return {};
+	sortMemories();
+
+	return [];
 
 }
 
@@ -68,11 +74,19 @@ export function getMemories() {
  */
 export function getTodaysMemories() {
 
-	let date = slugify( getDate() );
 	let memories = getMemories();
 
-	if ( memories[date] ) {
-		return memories[date];
+	// Filter out all the memories except the one that was saved today.
+	memories = memories.filter(
+		function ( memory ) {
+			return memory.prettyDate === getDate();
+		}
+	);
+
+	console.log( memories );
+
+	if ( memories[0] ) {
+		return memories[0];
 	}
 
 	return false;
@@ -87,10 +101,20 @@ export function getTodaysMemories() {
  */
 export function addMemories( newMemories ) {
 
-	const memories = getMemories();
-	const slug = slugify( getDate() );
+	let memories = getMemories();
+	let date = new Date();
 
-	memories[ slug ] = newMemories;
+	// Filter out todays memory, and keep the rest.
+	memories = memories.filter(
+		function ( memory ) {
+			return memory.prettyDate !== getDate();
+		}
+	);
+
+	newMemories.date = date.getTime();
+	newMemories.prettyDate = getDate();
+
+	memories.push( newMemories );
 
 	saveMemories( memories );
 
@@ -104,6 +128,23 @@ export function addMemories( newMemories ) {
  */
 export function saveMemories( memories ) {
 
+	memories = sortMemories( memories );
+
 	localStorage.setItem( 'memories', JSON.stringify( memories ) );
+
+}
+
+
+export function sortMemories( memories ) {
+
+	// return memories;
+
+	memories.sort(
+		function( a, b ) {
+			return a.date - b.date;
+		}
+	);
+
+	return memories;
 
 }
