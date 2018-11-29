@@ -1,5 +1,4 @@
 import React from 'react';
-import HappyMemory from "./HappyMemory";
 import { getTodaysMemories } from '../helpers';
 import { addMemories } from "../helpers";
 
@@ -9,56 +8,165 @@ import { addMemories } from "../helpers";
  */
 class AddHappyMemories extends React.Component {
 
-	memory1Ref = React.createRef();
-	memory2Ref = React.createRef();
-	memory3Ref = React.createRef();
+	state = {
+		step: 1,
+		memories: {},
+		memory: ''
+	};
+
+	memoryRef = React.createRef();
+
+	constructor( props ) {
+
+		super( props );
+
+		this.state.memories = getTodaysMemories();
+		this.state.memory = this.state.memories['memory' + this.state.step];
+
+	};
+
+
+	/**
+	 * Add a change handler to set the textarea state.
+	 */
+	handleChange = ( event ) => {
+
+		this.setState(
+			{
+				memory: event.currentTarget.value
+			}
+		);
+
+	};
 
 
 	/**
 	 * Save the new memories.
 	 */
-	formSubmit = ( event ) => {
+	formSubmit = ( event = null ) => {
 
-		event.preventDefault();
+		if ( event ) {
+			event.preventDefault();
+		}
 
-		let memories = {
-			'memory1': this.memory1Ref.current.value,
-			'memory2': this.memory2Ref.current.value,
-			'memory3': this.memory3Ref.current.value
-		};
+		// Don't save anything, we're at the end now.
+		if ( this.state.step >= 4 ) {
+			return false;
+		}
+
+		let memories = { ...this.state.memories };
+		memories['memory' + this.state.step] = this.memoryRef.current.value;
+
+		this.setState(
+			{
+				memories
+			}
+		);
 
 		addMemories( memories );
 
 	};
 
 
-	render() {
+	setStep = ( step ) => {
 
-		let memories = getTodaysMemories();
+		if ( step === this.state.step ) {
+			return false;
+		}
+
+		// Save the current values.
+		this.formSubmit();
+
+		// Change the step.
+		this.setState(
+			{
+				step: step,
+				memory: this.state.memories['memory' + step]
+			}
+		);
+
+	};
+
+
+	nextStep = ( event ) => {
+		this.setStep( this.state.step + 1 );
+	};
+
+
+	// Same as nextStep, but decrementing
+	previousStep = ( event ) => {
+		this.setStep( this.state.step - 1 );
+	};
+
+
+	getCurrentComponent = () => {
+
+		if ( this.state.step >= 4 ) {
+			return (
+				<div className="finished">Finished</div>
+			);
+		}
+
+		let id = 'memory' + this.state.step;
 
 		return (
-			<form onSubmit={this.formSubmit}>
+			<React.Fragment>
+				<label htmlFor={id}>{this.state.step}.</label>
+				<textarea
+					ref={this.memoryRef}
+					key={id}
+					name={id}
+					id={id}
+					value={this.state.memory}
+					onChange={this.handleChange}
+				></textarea>
+			</React.Fragment>
+		);
 
-				<HappyMemory
-					formRef={this.memory1Ref}
-					id="memory-1"
-					number={1}
-					memory={memories.memory1}
-				/>
-				<HappyMemory
-					formRef={this.memory2Ref}
-					id="memory-2"
-					number={2}
-					memory={memories.memory2}
-				/>
-				<HappyMemory
-					formRef={this.memory3Ref}
-					id="memory-3"
-					number={3}
-					memory={memories.memory3}
-				/>
+	};
 
-				<input type="submit" value="Save Happy Memories" />
+
+	getWizardButtons = () => {
+
+		let buttons = [];
+
+		if ( this.state.step > 1 ) {
+			buttons.push(
+				<button
+					onClick={this.previousStep}
+					key={'back'+this.state.step}
+				>Back</button>
+			);
+		}
+
+		if ( this.state.step < 4 ) {
+			buttons.push(
+				<button
+					onClick={this.nextStep}
+					key={'next'+this.state.step}
+				>Next</button>
+			);
+		}
+
+		return buttons;
+
+	};
+
+
+	render() {
+
+		return (
+			<form onSubmit={this.formSubmit} className={'step'+this.state.step}>
+
+				{ this.getCurrentComponent() }
+
+				<button onClick={() => { this.setStep( 1 ); }}>1</button>
+				<button onClick={() => { this.setStep( 2 ); }}>2</button>
+				<button onClick={() => { this.setStep( 3 ); }}>3</button>
+				<button onClick={() => { this.setStep( 4 ); }}>4</button>
+
+				{ this.getWizardButtons() }
+
 			</form>
 		);
 
