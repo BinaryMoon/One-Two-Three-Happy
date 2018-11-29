@@ -58,11 +58,11 @@ export function getMemories() {
 
 	let memories = localStorage.getItem( 'memories' );
 
-	if ( memories && memories.length ) {
-		return JSON.parse( memories );
+	if ( memories && memories.length > 0 ) {
+		memories = JSON.parse( memories );
+		memories = sortMemories( memories );
+		return memories;
 	}
-
-	sortMemories();
 
 	return [];
 
@@ -76,14 +76,16 @@ export function getTodaysMemories() {
 
 	let memories = getMemories();
 
+	if ( ! memories ) {
+		return false;
+	}
+
 	// Filter out all the memories except the one that was saved today.
 	memories = memories.filter(
 		function ( memory ) {
 			return memory.prettyDate === getDate();
 		}
 	);
-
-	console.log( memories );
 
 	if ( memories[0] ) {
 		return memories[0];
@@ -135,13 +137,20 @@ export function saveMemories( memories ) {
 }
 
 
-export function sortMemories( memories ) {
+/**
+ * Sort the memories in reverse chronological order.
+ *
+ * @param {array} memories List of memories.
+ */
+export function sortMemories( memories = null ) {
 
-	// return memories;
+	if ( ! memories || memories.length <= 0 ) {
+		return memories;
+	}
 
 	memories.sort(
 		function( a, b ) {
-			return a.date - b.date;
+			return b.date - a.date;
 		}
 	);
 
