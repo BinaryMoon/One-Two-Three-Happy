@@ -5,6 +5,12 @@ class Memories extends React.Component {
 
 	render() {
 
+		if ( ! this.props.memories ) {
+			return (
+				<div>No memories</div>
+			);
+		}
+
 		return (
 			<React.Fragment>
 			{
