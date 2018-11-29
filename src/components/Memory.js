@@ -12,7 +12,7 @@ class Memory extends React.Component {
 		}
 
 		return (
-			<div class="memory">
+			<div className="memory">
 				<h3>{ title }</h3>
 				<p>{ this.props.memories.memory1 }</p>
 				<p>{ this.props.memories.memory2 }</p>
