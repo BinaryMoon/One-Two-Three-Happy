@@ -46,7 +46,7 @@ export function getDate( date = null ) {
 		date = new Date();
 	}
 
-	return fecha.format( new Date(), 'Do MMMM YYYY' );
+	return fecha.format( date, 'Do MMMM YYYY' );
 
 }
 
