@@ -17,6 +17,12 @@
 
 		margin-bottom: $grid-line-height;
 
+		&:last-child {
+
+			margin-bottom: 0;
+
+		}
+
 	}
 
 	img {
