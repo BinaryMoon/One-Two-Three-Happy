@@ -1,7 +1,8 @@
 import React from 'react';
 import { getTodaysMemories } from '../helpers';
-import { addMemories } from '../helpers';
+import { addMemories, rando } from '../helpers';
 import { Link } from 'react-router-dom';
+import { openmojiPath, openmojiJoy } from '../openmoji';
 
 
 /**
@@ -102,13 +103,20 @@ class AddHappyMemories extends React.Component {
 	getCurrentComponent = () => {
 
 		if ( this.state.step >= 4 ) {
+
+			let image = openmojiPath( rando( openmojiJoy ) );
+
 			return (
 				<div className="finished message">
+					<img src={image} alt="Yay!" />
 					<h3>Happy Days!</h3>
-					<Link to="/archive/" className="archive button">View Archive</Link>
-					<button className="ghost" onClick={() => { this.setStep( 1 ); }}>Start Again</button>
+					<div className="actions">
+						<Link to="/archive/" className="archive button">View Archive</Link>
+						<button className="ghost" onClick={() => { this.setStep( 1 ); }}>Start Again</button>
+					</div>
 				</div>
 			);
+
 		}
 
 		let id = 'memory' + this.state.step;
