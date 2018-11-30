@@ -70,6 +70,8 @@ class AddHappyMemories extends React.Component {
 			}
 		);
 
+		this.formSubmit();
+
 	};
 
 
