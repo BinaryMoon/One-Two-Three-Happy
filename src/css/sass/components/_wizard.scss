@@ -1,0 +1,41 @@
+.wizard {
+
+	display: flex;
+	margin-bottom: $grid-line-height;
+
+	button {
+
+		flex-grow: 1;
+		background: transparent;
+		border-bottom: 0.5em solid $canvas-grey-5;
+
+		&:focus,
+		&:hover {
+
+			background: $canvas-grey-5;
+			color: black;
+
+		}
+
+	}
+
+	.form-step1 & .step1,
+	.form-step2 & .step2,
+	.form-step3 & .step3,
+	.form-step4 & .step4 {
+
+		background: $canvas-grey-5;
+
+	}
+
+	.form-step1 & .step1,
+	.form-step2 & .step1,
+	.form-step2 & .step2,
+	.form-step3 & .step1,
+	.form-step3 & .step2,
+	.form-step3 & .step3,
+	.form-step4 & button {
+		border-color: black;
+	}
+
+}
