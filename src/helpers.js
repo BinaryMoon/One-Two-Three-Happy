@@ -157,3 +157,34 @@ export function sortMemories( memories = null ) {
 	return memories;
 
 }
+
+
+export function emptyMemories( memories = null ) {
+
+	if ( ! memories ) {
+		return true;
+	}
+
+	console.log( typeof memories, memories );
+
+	if ( 'object' !== typeof memories ) {
+		return true;
+	}
+
+	if ( memories.length < 1 ) {
+		return true;
+	}
+
+	if ( ! memories[0] ) {
+		return true;
+	}
+
+	// console.log( memories.length );
+
+	if ( ! memories[0].memory1 && ! memories[0].memory2 && ! memories[0].memory3 ) {
+		return true;
+	}
+
+	return false;
+
+}

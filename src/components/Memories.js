@@ -1,6 +1,7 @@
 import React from 'react';
 import Memory from './Memory';
 import { Link } from 'react-router-dom';
+import { emptyMemories } from '../helpers';
 
 class Memories extends React.Component {
 
@@ -8,7 +9,7 @@ class Memories extends React.Component {
 
 		let memories = this.props.memories;
 
-		if ( ! memories || memories.length < 1 || ( ! memories.memory1 && ! memories.memory2 && ! memories.memory3 ) ) {
+		if ( emptyMemories( memories ) ) {
 
 			return (
 				<div className="message">
