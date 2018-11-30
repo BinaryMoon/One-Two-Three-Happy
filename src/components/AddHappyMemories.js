@@ -22,6 +22,16 @@ class AddHappyMemories extends React.Component {
 
 		super( props );
 
+		let memories = getTodaysMemories();
+
+		if ( ! memories ) {
+			memories = {
+				memory1: '',
+				memory2: '',
+				memory3: '',
+			};
+		}
+
 		this.state.memories = getTodaysMemories();
 		this.state.memory = this.state.memories['memory' + this.state.step];
 
@@ -65,7 +75,13 @@ class AddHappyMemories extends React.Component {
 			}
 		);
 
-		addMemories( memories );
+		// let memoryString = memories.memory1 + memories.memory2 + memories.memory3;
+
+		// console.log( memoryString );
+
+		// if ( memoryString ) {
+			addMemories( memories );
+		// }
 
 	};
 

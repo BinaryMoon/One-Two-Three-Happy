@@ -6,7 +6,9 @@ class Memories extends React.Component {
 
 	render() {
 
-		if ( ! this.props.memories || this.props.memories.length < 1 ) {
+		let memories = this.props.memories;
+
+		if ( ! memories || memories.length < 1 || ( ! memories.memory1 && ! memories.memory2 && ! memories.memory3 ) ) {
 
 			return (
 				<div className="message">
@@ -20,12 +22,12 @@ class Memories extends React.Component {
 		return (
 			<React.Fragment>
 			{
-				Object.keys( this.props.memories ).map(
+				Object.keys( memories ).map(
 					key => (
 						<Memory
 							key={key}
 							index={key}
-							memories={this.props.memories[key]}
+							memories={memories[key]}
 						/>
 					)
 				)
