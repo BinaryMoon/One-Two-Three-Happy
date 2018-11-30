@@ -1,6 +1,7 @@
 import React from 'react';
 import { getTodaysMemories } from '../helpers';
-import { addMemories } from "../helpers";
+import { addMemories } from '../helpers';
+import { Link } from 'react-router-dom';
 
 
 /**
@@ -93,7 +94,6 @@ class AddHappyMemories extends React.Component {
 	};
 
 
-	// Same as nextStep, but decrementing
 	previousStep = ( event ) => {
 		this.setStep( this.state.step - 1 );
 	};
@@ -103,7 +103,11 @@ class AddHappyMemories extends React.Component {
 
 		if ( this.state.step >= 4 ) {
 			return (
-				<div className="finished">Finished</div>
+				<div className="finished message">
+					<h3>Happy Days!</h3>
+					<Link to="/archive/" className="archive button">View Archive</Link>
+					<button className="ghost" onClick={() => { this.setStep( 1 ); }}>Start Again</button>
+				</div>
 			);
 		}
 
@@ -111,7 +115,6 @@ class AddHappyMemories extends React.Component {
 
 		return (
 			<React.Fragment>
-				<label htmlFor={id}>{this.state.step}.</label>
 				<textarea
 					ref={this.memoryRef}
 					key={id}
@@ -130,21 +133,30 @@ class AddHappyMemories extends React.Component {
 
 		let buttons = [];
 
-		if ( this.state.step > 1 ) {
-			buttons.push(
-				<button
-					onClick={this.previousStep}
-					key={'back'+this.state.step}
-				>Back</button>
-			);
-		}
+		// if ( this.state.step > 1 ) {
+		// 	buttons.push(
+		// 		<button
+		// 			onClick={this.previousStep}
+		// 			key={'back'+this.state.step}
+		// 		>Back</button>
+		// 	);
+		// }
 
-		if ( this.state.step < 4 ) {
+		if ( this.state.step < 3 ) {
 			buttons.push(
 				<button
 					onClick={this.nextStep}
 					key={'next'+this.state.step}
-				>Next</button>
+				>Next Memory</button>
+			);
+		}
+
+		if ( 3 === this.state.step ) {
+			buttons.push(
+				<button
+					onClick={this.nextStep}
+					key={'next'+this.state.step}
+				>Finish</button>
 			);
 		}
 
@@ -156,14 +168,16 @@ class AddHappyMemories extends React.Component {
 	render() {
 
 		return (
-			<form onSubmit={this.formSubmit} className={'step'+this.state.step}>
+			<form onSubmit={this.formSubmit} className={'form-step'+this.state.step}>
+
+				<nav className="wizard">
+					<button className="step1" onClick={() => { this.setStep( 1 ); }}>1</button>
+					<button className="step2" onClick={() => { this.setStep( 2 ); }}>2</button>
+					<button className="step3" onClick={() => { this.setStep( 3 ); }}>3</button>
+					<button className="step4" onClick={() => { this.setStep( 4 ); }}>Complete</button>
+				</nav>
 
 				{ this.getCurrentComponent() }
-
-				<button onClick={() => { this.setStep( 1 ); }}>1</button>
-				<button onClick={() => { this.setStep( 2 ); }}>2</button>
-				<button onClick={() => { this.setStep( 3 ); }}>3</button>
-				<button onClick={() => { this.setStep( 4 ); }}>4</button>
 
 				{ this.getWizardButtons() }
 
