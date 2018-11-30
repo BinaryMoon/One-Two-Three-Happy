@@ -1,0 +1,34 @@
+.emoji-list {
+
+	display: flex;
+	margin-bottom: $grid-line-height;
+
+	label {
+
+		flex-grow: 1;
+		width: 10%;
+
+		img {
+
+			display: block;
+			margin: 0 auto;
+			padding: 0.5rem 0;
+			max-height: 4rem;
+
+		}
+
+		input {
+
+			display: none;
+
+			&:checked + img {
+
+				background: $canvas-grey-5;
+
+			}
+
+		}
+
+	}
+
+}

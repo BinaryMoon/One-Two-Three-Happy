@@ -1,8 +1,9 @@
 import React from 'react';
 import { getTodaysMemories } from '../helpers';
-import { addMemories, rando } from '../helpers';
+import { addMemories, rando, getDate } from '../helpers';
 import { Link } from 'react-router-dom';
 import { openmojiPath, openmojiJoy } from '../openmoji';
+import EmojiList from './EmojiList';
 
 
 /**
@@ -13,9 +14,11 @@ class AddHappyMemories extends React.Component {
 	state = {
 		step: 1,
 		memories: {},
-		memory: ''
+		memory: '',
+		emoji: 'happy',
 	};
 
+	// References to the different components.
 	memoryRef = React.createRef();
 
 	constructor( props ) {
@@ -29,6 +32,9 @@ class AddHappyMemories extends React.Component {
 				memory1: '',
 				memory2: '',
 				memory3: '',
+				emoji1: 'happy',
+				emoji2: 'happy',
+				emoji3: 'happy',
 			};
 		}
 
@@ -53,6 +59,20 @@ class AddHappyMemories extends React.Component {
 
 
 	/**
+	 * Add a change handler for setting the emoji value.
+	 */
+	handleEmojiChange = ( event ) => {
+
+		this.setState(
+			{
+				emoji: event.currentTarget.value
+			}
+		);
+
+	};
+
+
+	/**
 	 * Save the new memories.
 	 */
 	formSubmit = ( event = null ) => {
@@ -68,6 +88,7 @@ class AddHappyMemories extends React.Component {
 
 		let memories = { ...this.state.memories };
 		memories['memory' + this.state.step] = this.memoryRef.current.value;
+		memories['emoji' + this.state.step] = this.state.emoji;
 
 		this.setState(
 			{
@@ -92,11 +113,18 @@ class AddHappyMemories extends React.Component {
 		// Save the current values.
 		this.formSubmit();
 
+		// Ensure there's a default value for the selected emoji.
+		let emoji = 'happy';
+		if ( this.state.memories['emoji' + step] ) {
+			emoji = this.state.memories['emoji' + step];
+		}
+
 		// Change the step.
 		this.setState(
 			{
 				step: step,
-				memory: this.state.memories['memory' + step]
+				memory: this.state.memories['memory' + step],
+				emoji: emoji,
 			}
 		);
 
@@ -128,7 +156,7 @@ class AddHappyMemories extends React.Component {
 			return (
 				<div className="finished message">
 					<img src={image} alt="Yay!" />
-					<h3>Happy Days!</h3>
+					<h3>All done for {getDate()}, Happy Days!</h3>
 					<div className="actions">
 						<Link to="/archive/" className="archive button">View Archive</Link>
 						<button className="ghost" onClick={() => { this.setStep( 1 ); }}>Start Again</button>
@@ -151,6 +179,10 @@ class AddHappyMemories extends React.Component {
 					value={this.state.memory}
 					onChange={this.handleChange}
 				></textarea>
+				<EmojiList
+					handleEmojiChange={this.handleEmojiChange}
+					emoji={this.state.emoji}
+				/>
 			</React.Fragment>
 		);
 
@@ -168,6 +200,7 @@ class AddHappyMemories extends React.Component {
 		if ( this.state.step < 3 ) {
 			buttons.push(
 				<button
+					className="next-wizard"
 					onClick={this.nextStep}
 					key={'next'+this.state.step}
 				>Next Memory</button>
@@ -178,6 +211,7 @@ class AddHappyMemories extends React.Component {
 		if ( 3 === this.state.step ) {
 			buttons.push(
 				<button
+					className="next-wizard"
 					onClick={this.nextStep}
 					key={'next'+this.state.step}
 				>Finish</button>
