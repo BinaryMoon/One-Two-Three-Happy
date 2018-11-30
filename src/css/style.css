@@ -802,6 +802,8 @@ header {
       padding: 1.5rem 1.5rem; } }
   .message > * {
     margin-bottom: 1.5rem; }
+    .message > *:last-child {
+      margin-bottom: 0; }
   .message img {
     max-width: 10rem; }
   .message .actions > * {
