@@ -3,6 +3,7 @@ export const openmoji = {
 	'sparkles': '2728',
 	'star': '1F31F',
 	'happy': '1F601',
+	'heart': '2764',
 	'thumb': '1F44D',
 };
 
@@ -12,6 +13,7 @@ export const openmojiJoy = [
 	openmoji.star,
 	openmoji.happy,
 	openmoji.thumb,
+	openmoji.heart,
 ];
 
 export function openmojiPath( image ) {
