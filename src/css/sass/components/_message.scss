@@ -1,0 +1,16 @@
+.message {
+
+	min-height: 10rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: $grid-line-height;
+	background: $canvas-grey-5;
+
+	> * {
+
+		margin-bottom: $grid-line-height;
+
+	}
+
+}
