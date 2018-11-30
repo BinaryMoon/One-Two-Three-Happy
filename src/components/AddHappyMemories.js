@@ -75,17 +75,14 @@ class AddHappyMemories extends React.Component {
 			}
 		);
 
-		// let memoryString = memories.memory1 + memories.memory2 + memories.memory3;
-
-		// console.log( memoryString );
-
-		// if ( memoryString ) {
-			addMemories( memories );
-		// }
+		addMemories( memories );
 
 	};
 
 
+	/**
+	 * Set the current step for the wizard.
+	 */
 	setStep = ( step ) => {
 
 		if ( step === this.state.step ) {
@@ -116,8 +113,14 @@ class AddHappyMemories extends React.Component {
 	};
 
 
+	/**
+	 * Get the current component for the wizard based on the slide being viewed.
+	 * Most of the slides are the memory component so display the textarea.
+	 * The final slide (slide 4) displays a completion message.
+	 */
 	getCurrentComponent = () => {
 
+		// Final slide: Submission complete.
 		if ( this.state.step >= 4 ) {
 
 			let image = openmojiPath( rando( openmojiJoy ) );
@@ -135,6 +138,7 @@ class AddHappyMemories extends React.Component {
 
 		}
 
+		// Ask for a new memory.
 		let id = 'memory' + this.state.step;
 
 		return (
@@ -153,19 +157,14 @@ class AddHappyMemories extends React.Component {
 	};
 
 
+	/**
+	 * Get the buttons to enable progress through the wizard.
+	 */
 	getWizardButtons = () => {
 
 		let buttons = [];
 
-		// if ( this.state.step > 1 ) {
-		// 	buttons.push(
-		// 		<button
-		// 			onClick={this.previousStep}
-		// 			key={'back'+this.state.step}
-		// 		>Back</button>
-		// 	);
-		// }
-
+		// Next Memory.
 		if ( this.state.step < 3 ) {
 			buttons.push(
 				<button
@@ -175,6 +174,7 @@ class AddHappyMemories extends React.Component {
 			);
 		}
 
+		// Finish the wizard.
 		if ( 3 === this.state.step ) {
 			buttons.push(
 				<button
