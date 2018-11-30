@@ -40,6 +40,7 @@ class AddHappyMemories extends React.Component {
 
 		this.state.memories = getTodaysMemories();
 		this.state.memory = this.state.memories['memory' + this.state.step];
+		this.state.emoji = this.state.memories['emoji' + this.state.step];
 
 	};
 
