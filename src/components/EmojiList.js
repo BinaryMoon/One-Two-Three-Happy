@@ -13,23 +13,25 @@ class EmojiList extends React.Component {
 
 		return (
 			<div className="emoji-list">
-			{Object.keys( openmoji ).map(
-				(key) => (
-					<label
-						key={key}
-					>
-						<input
-							ref={this.props.formRef}
-							type="radio"
-							value={key}
-							name="emoji-list"
-							checked={defaultKey === key}
-							onChange={this.props.handleEmojiChange}
-						/>
-						<img src={ openmojiPath( openmoji[ key ] ) } alt={key} />
-					</label>
+			{
+				Object.keys( openmoji ).map(
+					key => (
+						<label
+							key={key}
+						>
+							<input
+								ref={this.props.formRef}
+								type="radio"
+								value={key}
+								name="emoji-list"
+								checked={defaultKey === key}
+								onChange={this.props.handleEmojiChange}
+							/>
+							<img src={ openmojiPath( openmoji[ key ] ) } alt={key} />
+						</label>
+					)
 				)
-			)}
+			}
 			</div>
 		);
 
