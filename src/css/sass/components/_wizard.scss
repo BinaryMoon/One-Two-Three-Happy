@@ -7,7 +7,7 @@
 
 		flex-grow: 1;
 		background: transparent;
-		border-bottom: 0.5em solid $canvas-grey-5;
+		border-bottom: $border-width solid $canvas-grey-5;
 
 		&:focus,
 		&:hover {
@@ -35,7 +35,17 @@
 	.form-step3 & .step2,
 	.form-step3 & .step3,
 	.form-step4 & button {
+
 		border-color: black;
+
 	}
 
 }
+
+.next-wizard {
+
+	width: 100%;
+	max-width: 15rem;
+
+}
+

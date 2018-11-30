@@ -305,7 +305,7 @@ h6 {
 
 hr {
   border: none;
-  border-bottom: 2px solid #1a1919; }
+  border-bottom: 0.25rem solid #1a1919; }
 
 pre {
   background: #1a1919;
@@ -371,7 +371,7 @@ input.settings-input {
   width: 100%;
   border-radius: 0;
   background: #f2f1f0;
-  border: 2px solid #cccccc; }
+  border: 0.25rem solid black; }
   .device-click input[type=text], .device-click
   input[type=password], .device-click
   input[type=email], .device-click
@@ -518,7 +518,7 @@ input[type="search"]::-webkit-search-decoration {
           appearance: none; }
 
 select {
-  height: calc( 3rem + 4px); }
+  height: calc( 3rem + 0.5rem); }
   select:hover {
     cursor: pointer; }
 
@@ -581,7 +581,7 @@ legend {
   letter-spacing: 0.1em; }
 
 fieldset {
-  border: 1px solid #cccccc; }
+  border: 1px solid black; }
   fieldset ul.radio {
     margin: 0; }
 
@@ -648,7 +648,7 @@ table {
   width: 100%; }
   table th {
     color: #000;
-    border-bottom: 2px solid #1a1919; }
+    border-bottom: 0.25rem solid #1a1919; }
   table th,
   table caption {
     font-size: 12px;
@@ -751,6 +751,22 @@ table {
   .content > * {
     max-width: 45rem; }
 
+.emoji-list {
+  display: flex;
+  margin-bottom: 1.5rem; }
+  .emoji-list label {
+    flex-grow: 1;
+    width: 10%; }
+    .emoji-list label img {
+      display: block;
+      margin: 0 auto;
+      padding: 0.5rem 0;
+      max-height: 4rem; }
+    .emoji-list label input {
+      display: none; }
+      .emoji-list label input:checked + img {
+        background: #f2f1f0; }
+
 header {
   max-width: 20rem;
   width: 100%;
@@ -830,7 +846,7 @@ header {
   .wizard button {
     flex-grow: 1;
     background: transparent;
-    border-bottom: 0.5em solid #f2f1f0; }
+    border-bottom: 0.25rem solid #f2f1f0; }
     .wizard button:focus, .wizard button:hover {
       background: #f2f1f0;
       color: black; }
@@ -847,6 +863,10 @@ header {
   .form-step3 .wizard .step3,
   .form-step4 .wizard button {
     border-color: black; }
+
+.next-wizard {
+  width: 100%;
+  max-width: 15rem; }
 
 main {
   display: flex;
