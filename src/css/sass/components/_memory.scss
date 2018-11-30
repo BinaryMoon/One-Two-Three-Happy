@@ -1,14 +1,30 @@
 .memory {
 
-	h3 {
+	display: flex;
+	margin-bottom: $grid-line-height;
 
-		background: $canvas-red;
-		color: contrast( $canvas-red );
+	img {
+
+		width: 3rem;
+		height: 3rem;
+		margin-right: $grid-gutter / 2;
+
+	}
+
+	span.date {
+
 		@include modular-scale( eta );
-		display: inline-block;
-		padding: 0 0.5em;
-		text-transform: uppercase;
-		letter-spacing: $font-uppercase-spacing;
+		width: 14rem;
+		text-align: right;
+
+	}
+
+	p {
+
+		flex-grow: 1;
+		@include modular-scale( epsilon );
+		margin: 0;
+		width: 100%;
 
 	}
 
