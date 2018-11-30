@@ -1,19 +1,21 @@
 export const openmoji = {
-	'rainbow': '1F308',
-	'sparkles': '2728',
-	'star': '1F31F',
 	'happy': '1F601',
 	'heart': '2764',
+	'rainbow': '1F308',
+	'star': '1F31F',
 	'thumb': '1F44D',
+	'lighbulb': '1F4A1',
+	'cat': '1F638',
+	'flower': '1F33C',
 };
 
 export const openmojiJoy = [
 	openmoji.rainbow,
-	openmoji.sparkles,
 	openmoji.star,
 	openmoji.happy,
 	openmoji.thumb,
 	openmoji.heart,
+	openmoji.cat,
 ];
 
 export function openmojiPath( image ) {
