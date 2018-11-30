@@ -1,5 +1,5 @@
 export const openmoji = {
-	'rainbow': '1f308',
+	'rainbow': '1F308',
 	'sparkles': '2728',
 	'star': '1F31F',
 	'happy': '1F601',
@@ -12,5 +12,8 @@ export const openmojiJoy = [
 	openmoji.happy
 ];
 
+export function openmojiPath( image ) {
 
+	return '/images/openmoji/' + image + '.svg';
 
+}
