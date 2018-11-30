@@ -1,14 +1,20 @@
 import React from 'react';
 import Memory from './Memory';
+import { Link } from 'react-router-dom';
 
 class Memories extends React.Component {
 
 	render() {
 
-		if ( ! this.props.memories ) {
+		if ( ! this.props.memories || this.props.memories.length < 1 ) {
+
 			return (
-				<div>No memories</div>
+				<div className="message">
+					<h3>No memories yet</h3>
+					<Link to="/" className="button">Add your first</Link>
+				</div>
 			);
+
 		}
 
 		return (
