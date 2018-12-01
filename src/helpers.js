@@ -182,8 +182,6 @@ export function emptyMemories( memories = null ) {
 		return true;
 	}
 
-	// console.log( memories.length );
-
 	if (1 === memories.length && ! memories[0].memory1 && ! memories[0].memory2 && ! memories[0].memory3 ) {
 		return true;
 	}
