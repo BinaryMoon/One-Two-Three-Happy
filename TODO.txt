@@ -1,6 +1,7 @@
 Ideas
 
 Tag people who made you happy
+Favicon
 Emoticon per idea.
 Search memories
 Google Analytics
