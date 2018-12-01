@@ -745,9 +745,10 @@ table {
     margin-bottom: 3rem; }
     @media only screen and (max-width: 600px) {
       .content h1, .content h2 {
-        font-size: 28px;
-        font-size: 1.75rem;
-        line-height: 1.5; } }
+        font-size: 20px;
+        font-size: 1.25rem;
+        line-height: 1.5;
+        font-weight: bold; } }
   .content > * {
     max-width: 45rem; }
 
@@ -762,6 +763,9 @@ table {
       margin: 0 auto;
       padding: 0.5rem 0;
       max-height: 4rem; }
+      @media only screen and (max-width: 600px) {
+        .emoji-list label img {
+          max-height: 3rem; } }
     .emoji-list label input {
       display: none; }
       .emoji-list label input:checked + img {
@@ -815,6 +819,13 @@ header {
     line-height: 1.5;
     margin: 0;
     width: 100%; }
+  @media only screen and (max-width: 600px) {
+    .memory {
+      flex-direction: column; }
+      .memory span.date,
+      .memory p {
+        width: 100%;
+        text-align: left; } }
 
 .message {
   min-height: 10rem;

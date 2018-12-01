@@ -19,7 +19,8 @@
 
 		@include for-phone {
 
-			@include modular-scale( delta );
+			@include modular-scale( epsilon );
+			font-weight: bold;
 
 		}
 
