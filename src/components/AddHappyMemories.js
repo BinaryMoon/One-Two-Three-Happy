@@ -67,10 +67,9 @@ class AddHappyMemories extends React.Component {
 		this.setState(
 			{
 				emoji: event.currentTarget.value
-			}
+			},
+			this.formSubmit
 		);
-
-		this.formSubmit();
 
 	};
 
