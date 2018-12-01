@@ -159,13 +159,16 @@ export function sortMemories( memories = null ) {
 }
 
 
+/**
+ * Check to see if the memories object is empty or if there is something to display.
+ *
+ * @param {object} memories List of memories.
+ */
 export function emptyMemories( memories = null ) {
 
 	if ( ! memories ) {
 		return true;
 	}
-
-	console.log( typeof memories, memories );
 
 	if ( 'object' !== typeof memories ) {
 		return true;
@@ -181,7 +184,7 @@ export function emptyMemories( memories = null ) {
 
 	// console.log( memories.length );
 
-	if ( ! memories[0].memory1 && ! memories[0].memory2 && ! memories[0].memory3 ) {
+	if (1 === memories.length && ! memories[0].memory1 && ! memories[0].memory2 && ! memories[0].memory3 ) {
 		return true;
 	}
 
