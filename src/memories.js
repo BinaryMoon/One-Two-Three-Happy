@@ -28,13 +28,13 @@ export function getMemoriesByTag( tag ) {
 
 	let memories = getMemories();
 
-	tag = '#' + tag;
+	tag = '#' + tag.toLowerCase();
 
 	Object.keys( memories ).map(
 		key => {
-			if ( memories[key].memory1 && ! memories[key].memory1.includes( tag ) ) { memories[key].memory1 = ''; }
-			if ( memories[key].memory2 && ! memories[key].memory2.includes( tag ) ) { memories[key].memory2 = ''; }
-			if ( memories[key].memory3 && ! memories[key].memory3.includes( tag ) ) { memories[key].memory3 = ''; }
+			if ( memories[key].memory1 && ! memories[key].memory1.toLowerCase().includes( tag ) ) { memories[key].memory1 = ''; }
+			if ( memories[key].memory2 && ! memories[key].memory2.toLowerCase().includes( tag ) ) { memories[key].memory2 = ''; }
+			if ( memories[key].memory3 && ! memories[key].memory3.toLowerCase().includes( tag ) ) { memories[key].memory3 = ''; }
 
 			if ( ! memories[key].memory1 && ! memories[key].memory2 && ! memories[key].memory3 ) {
 				delete memories[key];
