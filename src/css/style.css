@@ -733,14 +733,14 @@ table {
 
 .content {
   width: 100%;
-  min-width: 35rem;
+  max-width: 50rem;
   flex-grow: 1;
   padding: 1.5rem 3rem;
   overflow: scroll; }
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 782px) {
     .content {
       padding: 1.5rem 1.5rem;
-      min-width: auto; } }
+      max-width: 100%; } }
   .content h1, .content h2 {
     margin-bottom: 3rem; }
     @media only screen and (max-width: 600px) {
@@ -779,7 +779,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between; }
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 782px) {
     header {
       max-width: 100%; } }
   header .title {
@@ -820,9 +820,10 @@ header {
     margin: 0;
     width: 100%;
     white-space: pre-line; }
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 782px) {
     .memory {
-      flex-direction: column; }
+      flex-direction: column;
+      max-width: 28rem; }
       .memory span.date,
       .memory p {
         width: 100%;
@@ -862,6 +863,11 @@ header {
     .navigation a {
       flex-grow: 1; } }
 
+.tags {
+  margin-bottom: 3rem; }
+  .tags a {
+    margin-right: 1.5rem; }
+
 .wizard {
   display: flex;
   margin-bottom: 1.5rem; }
@@ -893,10 +899,15 @@ header {
 main {
   display: flex;
   height: 100vh; }
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 782px) {
     main {
       flex-direction: column;
       height: auto; } }
+
+a {
+  color: #43b3e8; }
+  a:hover {
+    text-decoration: none; }
 
 textarea {
   min-height: 10rem;
