@@ -1,18 +1,19 @@
-import React from "react";
-import Memories from "./Memories";
+import React from 'react';
+import Memories from './Memories';
+import Tags from './Tags';
 
 
 /**
  * List the users happy memories as stored in Localstorage.
  */
-class HappyArchive extends React.Component {
+class Archive extends React.Component {
 
 	render() {
 
 		return (
 			<div className="content archive">
-				<h1>Happy Memories</h1>
-				{/* <Tags></Tags> */}
+				<h1>{this.props.title}</h1>
+				<Tags />
 				<Memories
 					memories={this.props.memories}
 				/>
@@ -23,4 +24,4 @@ class HappyArchive extends React.Component {
 
 };
 
-export default HappyArchive;
+export default Archive;
