@@ -20,6 +20,34 @@ export function getMemories() {
 
 
 /**
+ * Get memories that include the specified tag.
+ *
+ * @param {string} tag Tag to filter by.
+ */
+export function getMemoriesByTag( tag ) {
+
+	let memories = getMemories();
+
+	tag = '#' + tag;
+
+	Object.keys( memories ).map(
+		key => {
+			if ( memories[key].memory1 && ! memories[key].memory1.includes( tag ) ) { memories[key].memory1 = ''; }
+			if ( memories[key].memory2 && ! memories[key].memory2.includes( tag ) ) { memories[key].memory2 = ''; }
+			if ( memories[key].memory3 && ! memories[key].memory3.includes( tag ) ) { memories[key].memory3 = ''; }
+
+			if ( ! memories[key].memory1 && ! memories[key].memory2 && ! memories[key].memory3 ) {
+				delete memories[key];
+			}
+			return true;
+		}
+	);
+
+	return memories;
+
+}
+
+/**
  * Get a list of the memories saved for today only.
  */
 export function getTodaysMemories() {
