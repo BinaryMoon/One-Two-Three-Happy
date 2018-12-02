@@ -1,6 +1,7 @@
 import React from 'react';
 import { rando, getDate } from '../helpers';
 import { getTodaysMemories, addMemories } from '../memories';
+import { exportTags } from '../tags';
 import { Link } from 'react-router-dom';
 import { openmojiPath, openmojiJoy } from '../openmoji';
 import EmojiList from './EmojiList';
@@ -99,6 +100,10 @@ class AddHappyMemories extends React.Component {
 		);
 
 		addMemories( memories );
+
+		exportTags( memories.memory1 );
+		exportTags( memories.memory2 );
+		exportTags( memories.memory3 );
 
 	};
 
