@@ -1,14 +1,14 @@
-import React from "react";
-import Header from "../components/Header";
-import Archive from "../components/Archive";
-import { getMemories } from "../memories";
+import React from 'react';
+import Header from '../components/Header';
+import Archive from '../components/Archive';
+import { getMemoriesByTag } from '../memories';
 
 class ArchiveTag extends React.Component {
 
 	render() {
 
 		let params = this.props.match.params;
-		let memories = getMemories();
+		let memories = getMemoriesByTag( params.tag );
 
 		return (
 			<React.Fragment>
