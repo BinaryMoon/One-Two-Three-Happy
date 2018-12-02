@@ -28,9 +28,11 @@ export function saveTags( tags ) {
 		return;
 	}
 
-	// tags.sort();
-
-	// console.log( tags );
+	tags.sort(
+		( a, b ) => {
+			return a.toLowerCase().localeCompare( b.toLowerCase() );
+		}
+	);
 
 	localStorage.setItem( 'tags', JSON.stringify( tags ) );
 
@@ -56,10 +58,13 @@ export function exportTags( text ) {
 	}
 
 	// Merge arrays and remove duplicates.
-	tags = {
+	tags = [
 		...tags,
 		...matches
-	};
+	];
+
+	// Make array unique.
+	tags = [ ...new Set( tags ) ];
 
 	saveTags( tags );
 
