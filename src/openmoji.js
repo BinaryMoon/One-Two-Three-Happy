@@ -7,6 +7,7 @@ export const openmoji = {
 	'lighbulb': '1F4A1',
 	'cat': '1F638',
 	'flower': '1F33C',
+	'yummy': '1F60B',
 };
 
 export const openmojiJoy = [
