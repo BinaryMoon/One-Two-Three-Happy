@@ -1,13 +1,13 @@
 Ideas
 
-Tag people who made you happy
+Filter memories by emoji
 Favicon
-Emoticon per idea.
 Search memories
 Google Analytics
 Link to Github
 Add a notice to the homepage for first time visitors who have yet to save any memories
 possible fix for 100% vh in mobile chrome? - https://dev.to/peiche/100vh-behavior-on-chrome-2hm8
+404 design
 
 
 Credits
