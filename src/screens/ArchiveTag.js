@@ -14,7 +14,7 @@ class ArchiveTag extends React.Component {
 			<React.Fragment>
 				<Header />
 				<Archive
-					title={'Tag: ' + params.tag}
+					title={'Tag: <strong>' + params.tag + '</strong>'}
 					memories={memories}
 					tag={params.tag}
 				/>

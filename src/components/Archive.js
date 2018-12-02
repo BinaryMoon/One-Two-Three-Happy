@@ -12,7 +12,7 @@ class Archive extends React.Component {
 
 		return (
 			<div className="content archive">
-				<h1>{this.props.title}</h1>
+				<h1 dangerouslySetInnerHTML={{__html:this.props.title}}></h1>
 				<Tags />
 				<Memories
 					memories={this.props.memories}
