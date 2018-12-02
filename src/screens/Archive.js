@@ -19,7 +19,6 @@ class Archives extends React.Component {
 			</React.Fragment>
 		);
 
-
 	};
 
 };
