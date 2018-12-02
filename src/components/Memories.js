@@ -1,7 +1,7 @@
 import React from 'react';
 import Memory from './Memory';
 import { Link } from 'react-router-dom';
-import { emptyMemories } from '../helpers';
+import { emptyMemories } from '../memories';
 
 class Memories extends React.Component {
 

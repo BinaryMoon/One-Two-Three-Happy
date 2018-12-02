@@ -1,6 +1,6 @@
 import React from 'react';
-import { getTodaysMemories } from '../helpers';
-import { addMemories, rando, getDate } from '../helpers';
+import { rando, getDate } from '../helpers';
+import { getTodaysMemories, addMemories } from '../memories';
 import { Link } from 'react-router-dom';
 import { openmojiPath, openmojiJoy } from '../openmoji';
 import EmojiList from './EmojiList';
