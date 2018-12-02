@@ -8,7 +8,7 @@ header {
 	flex-direction: column;
 	justify-content: space-between;
 
-	@include for-phone {
+	@include for-tablet {
 
 		max-width: 100%;
 

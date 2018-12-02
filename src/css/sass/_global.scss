@@ -3,10 +3,22 @@ main {
 	display: flex;
 	height: 100vh;
 
-	@include for-phone {
+	@include for-tablet {
 
 		flex-direction: column;
 		height: auto;
+
+	}
+
+}
+
+a {
+
+	color: $canvas-blue-dark;
+
+	&:hover {
+
+		text-decoration: none;
 
 	}
 

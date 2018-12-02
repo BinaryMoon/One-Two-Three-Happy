@@ -1,15 +1,15 @@
 .content {
 
 	width: 100%;
-	min-width: 35rem;
+	max-width: 50rem;
 	flex-grow: 1;
 	padding: $grid-line-height ( $grid-gutter );
 	overflow: scroll;
 
-	@include for-phone {
+	@include for-tablet {
 
 		padding: $grid-line-height ( $grid-gutter / 2 );
-		min-width: auto;
+		max-width: 100%;
 
 	}
 

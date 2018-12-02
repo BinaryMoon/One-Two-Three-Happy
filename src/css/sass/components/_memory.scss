@@ -29,9 +29,10 @@
 
 	}
 
-	@include for-phone {
+	@include for-tablet {
 
 		flex-direction: column;
+		max-width: 28rem;
 
 		span.date,
 		p {
