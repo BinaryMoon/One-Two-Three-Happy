@@ -17,7 +17,7 @@ class EmojiList extends React.Component {
 				Object.keys( openmoji ).map(
 					key => (
 						<label
-							key={key}
+							key={'emoji' + key}
 						>
 							<input
 								ref={this.props.formRef}

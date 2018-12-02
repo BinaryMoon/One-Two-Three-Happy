@@ -175,7 +175,7 @@ class AddHappyMemories extends React.Component {
 			<React.Fragment>
 				<textarea
 					ref={this.memoryRef}
-					key={id}
+					key={'editor' + id}
 					name={id}
 					id={id}
 					value={this.state.memory}

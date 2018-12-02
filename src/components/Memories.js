@@ -25,7 +25,7 @@ class Memories extends React.Component {
 			{
 				Object.keys( memories ).map(
 					key => (
-						<React.Fragment key={key}>
+						<React.Fragment key={'memories' + key}>
 							<Memory
 								memory={memories[key].memory1}
 								date={memories[key].date}
