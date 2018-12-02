@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import HappyArchive from "../components/HappyArchive";
-import { getMemories } from "../helpers";
+import { getMemories } from "../memories";
 
 class App extends React.Component {
 
