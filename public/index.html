@@ -37,6 +37,18 @@
 <body>
 
 	<main id="main"><!-- This is where our React app will go --></main>
+	<div class="warning notice" id="in-progress">
+		One Two Three Happy is in <a href="https://github.com/BinaryMoon/One-Two-Three-Happy/">public development</a>. It's going to change.<br />
+		If you're a developer you can <a href="https://github.com/BinaryMoon/One-Two-Three-Happy/issues">submit issues on Github</a>, otherwise ping me on <a href="https://twitter.com/binarymoon">Twitter</a>.
+		<button class="close small" onclick="var elem = document.querySelector('#some-element');
+		elem.parentNode.removeChild(elem);">Close</button>
+	</div>
+	<script>
+		var panel = document.querySelector( '#in-progress' );
+		panel.onclick = function() {
+			panel.style.display = 'none';
+		}
+	</script>
 
 </body>
 
