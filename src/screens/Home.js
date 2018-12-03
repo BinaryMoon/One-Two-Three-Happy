@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../components/Header";
-import Welcome from "../components/Welcome";
 import AddHappyMemories from "../components/AddHappyMemories";
 
 
@@ -12,7 +11,7 @@ class Home extends React.Component {
 			<React.Fragment>
 				<Header></Header>
 				<div className="content home">
-					<Welcome />
+					<h2>What made you happy today?</h2>
 					<AddHappyMemories />
 				</div>
 			</React.Fragment>
