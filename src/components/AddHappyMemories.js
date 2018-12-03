@@ -239,7 +239,7 @@ class AddHappyMemories extends React.Component {
 					<button className="step1" onClick={() => { this.setStep( 1 ); }}>1</button>
 					<button className="step2" onClick={() => { this.setStep( 2 ); }}>2</button>
 					<button className="step3" onClick={() => { this.setStep( 3 ); }}>3</button>
-					<button className="step4" onClick={() => { this.setStep( 4 ); }}>Complete</button>
+					<button className="step4" onClick={() => { this.setStep( 4 ); }}>Happy</button>
 				</nav>
 
 				{ this.getCurrentComponent() }
