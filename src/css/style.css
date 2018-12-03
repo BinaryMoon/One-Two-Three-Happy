@@ -533,8 +533,8 @@ button {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background: #7fd3f7;
-  color: #000;
+  background: #43b3e8;
+  color: #fff;
   display: inline-block;
   text-decoration: none;
   border-radius: 0;
@@ -556,12 +556,20 @@ button {
   button:focus,
   button:hover {
     background: #000;
-    color: #7fd3f7;
+    color: #43b3e8;
     text-decoration: none; }
   input[type=submit].ghost,
   a.button.ghost,
   button.ghost {
-    background: white; }
+    background: white;
+    color: black; }
+  input[type=submit].small,
+  a.button.small,
+  button.small {
+    font-size: 12px;
+    font-size: 0.75rem;
+    line-height: 1.75;
+    padding: 0.5rem 1rem; }
 
 label {
   display: block;
@@ -868,13 +876,33 @@ header {
   .tags a {
     margin-right: 1.5rem; }
 
+.warning {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  text-align: center;
+  padding: 0.75rem 1.5rem;
+  background: #fe0; }
+  @media only screen and (max-width: 782px) {
+    .warning {
+      padding-top: 1.5rem; } }
+  .warning a {
+    font-weight: bold; }
+  .warning .close {
+    position: absolute;
+    right: 0.75rem;
+    top: -0.75rem; }
+
 .wizard {
   display: flex;
   margin-bottom: 1.5rem; }
   .wizard button {
     flex-grow: 1;
     background: transparent;
-    border-bottom: 0.25rem solid #f2f1f0; }
+    border-bottom: 0.25rem solid #f2f1f0;
+    color: black; }
     .wizard button:focus, .wizard button:hover {
       background: #f2f1f0;
       color: black; }
@@ -905,7 +933,7 @@ main {
       height: auto; } }
 
 a {
-  color: #43b3e8; }
+  color: #1a98d4; }
   a:hover {
     text-decoration: none; }
 
