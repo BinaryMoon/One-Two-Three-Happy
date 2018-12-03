@@ -49,6 +49,14 @@
 	&.ghost {
 
 		background: white;
+		color: black;
+
+	}
+
+	&.small {
+
+		@include modular-scale( eta );
+		padding: ( $grid-line-height / 3 ) ( $grid-gutter / 3 );
 
 	}
 
