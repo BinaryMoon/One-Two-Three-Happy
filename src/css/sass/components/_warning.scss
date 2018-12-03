@@ -1,0 +1,32 @@
+.warning {
+
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 20;
+	text-align: center;
+	padding: ( $grid-line-height / 2 ) ( $grid-gutter / 2 );
+	background: $canvas-yellow;
+
+	@include for-tablet {
+
+		padding-top: $grid-line-height;
+
+	}
+
+	a {
+
+		font-weight: bold;
+
+	}
+
+	.close {
+
+		position: absolute;
+		right: $grid-gutter / 4;
+		top: $grid-line-height / -2;
+
+	}
+
+}
