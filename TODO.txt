@@ -1,9 +1,9 @@
 Ideas
 
+Switch storage to indexeddb - maybe with Dexie? https://dexie.org/docs/Tutorial/
 Filter memories by emoji
-Favicon
 Search memories
-Google Analytics
+Google Analytics - ensure it tracks each route
 Link to Github
 Add a notice to the homepage for first time visitors who have yet to save any memories
 possible fix for 100% vh in mobile chrome? - https://dev.to/peiche/100vh-behavior-on-chrome-2hm8
