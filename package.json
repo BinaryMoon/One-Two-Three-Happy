@@ -7,6 +7,7 @@
     "react-scripts": "^1.1.5"
   },
   "dependencies": {
+    "dexie": "^2.0.4",
     "firebase": "^4.10.1",
     "prop-types": "^15.6.2",
     "re-base": "^3.2.3",
