@@ -6,6 +6,7 @@
 
 import fecha from "./vendors/fecha";
 
+
 /**
  * Pick a random item from an array.
  *
@@ -38,7 +39,9 @@ export function slugify( text ) {
 
 
 /**
- * Get the current date.
+ * Get a nicely formatted date.
+ *
+ * @param {timestamp} date The date you want to format. If no date is specified it will use todays date.
  */
 export function getDate( date = null ) {
 
@@ -47,6 +50,17 @@ export function getDate( date = null ) {
 	}
 
 	return fecha.format( date, 'Do MMMM YYYY' );
+
+}
+
+
+/**
+ * Get todays date, nicely formatted.
+ */
+export function getToday() {
+
+	let date = new Date();
+	return fecha.format( date, 'YYYY-MM-DD' );
 
 }
 
