@@ -1,5 +1,5 @@
 import React from "react";
-import { getTags, getTagUrl } from "../tags";
+import { getTagUrl } from "../tags";
 import { Link } from 'react-router-dom';
 
 
@@ -7,11 +7,11 @@ class Tags extends React.Component {
 
 	render() {
 
-		let tags = getTags();
-
-		if ( ! tags ) {
+		if ( ! this.props.tags ) {
 			return null;
 		}
+
+		let tags = this.props.tags;
 
 		return (
 			<div className="tags">
