@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NotFound from "../screens/NotFound";
 import Home from '../screens/Home';
 import About from '../screens/About';
-import Archives from '../screens/Archive';
+import Archives from '../screens/Archives';
 import ArchiveTag from '../screens/ArchiveTag';
 
 const Router = () => (
