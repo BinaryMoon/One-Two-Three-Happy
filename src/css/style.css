@@ -770,14 +770,16 @@ table {
       display: block;
       margin: 0 auto;
       padding: 0.5rem 0;
-      max-height: 4rem; }
+      max-height: 4rem;
+      border: 0.2rem solid transparent; }
       @media only screen and (max-width: 600px) {
         .emoji-list label img {
           max-height: 3rem; } }
     .emoji-list label input {
       display: none; }
       .emoji-list label input:checked + img {
-        background: #f2f1f0; }
+        background: #f2f1f0;
+        border-color: #1a1919; }
 
 header {
   max-width: 20rem;
@@ -906,18 +908,18 @@ header {
     .wizard button:focus, .wizard button:hover {
       background: #f2f1f0;
       color: black; }
+  .form-step0 .wizard .step0,
   .form-step1 .wizard .step1,
   .form-step2 .wizard .step2,
-  .form-step3 .wizard .step3,
-  .form-step4 .wizard .step4 {
+  .form-step3 .wizard .step3 {
     background: #f2f1f0; }
+  .form-step0 .wizard .step0,
+  .form-step1 .wizard .step0,
   .form-step1 .wizard .step1,
+  .form-step2 .wizard .step0,
   .form-step2 .wizard .step1,
   .form-step2 .wizard .step2,
-  .form-step3 .wizard .step1,
-  .form-step3 .wizard .step2,
-  .form-step3 .wizard .step3,
-  .form-step4 .wizard button {
+  .form-step3 .wizard button {
     border-color: black; }
 
 .next-wizard {
