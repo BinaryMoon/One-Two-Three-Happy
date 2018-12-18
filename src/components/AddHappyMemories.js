@@ -1,10 +1,11 @@
 import React from 'react';
-import { rando, getDate } from '../helpers';
-import { getTodaysMemories, addMemories } from '../memories';
+import { rando, getDate, getToday } from '../helpers';
+import { addMemory, getMemoryKey } from '../memories';
 import { exportTags } from '../tags';
 import { Link } from 'react-router-dom';
 import { openmojiPath, openmojiJoy } from '../openmoji';
 import EmojiList from './EmojiList';
+import db, { databaseExport } from '../database';
 
 
 /**
@@ -13,35 +14,48 @@ import EmojiList from './EmojiList';
 class AddHappyMemories extends React.Component {
 
 	state = {
-		step: 1,
+		step: 0,
 		memories: {},
 		memory: '',
 		emoji: 'happy',
+		tags: [],
 	};
 
 	// References to the different components.
 	memoryRef = React.createRef();
 
-	constructor( props ) {
+	componentDidMount() {
 
-		super( props );
+		databaseExport();
 
-		let memories = getTodaysMemories();
+		// Load Memories.
+		db
+			.table( 'memories' )
+			.where( 'id' )
+			.startsWith( getToday() )
+			.toArray()
+			.then(
+				(memories) => {
+					let state = { memories };
 
-		if ( ! memories ) {
-			memories = {
-				memory1: '',
-				memory2: '',
-				memory3: '',
-				emoji1: 'happy',
-				emoji2: 'happy',
-				emoji3: 'happy',
-			};
-		}
+					if ( 'undefined' !== typeof memories[ 0 ] ) {
+						state.memory = ( 'string' === typeof memories[ 0 ].memory ? memories[ 0 ].memory : '' );
+						state.emoji = ( 'string' === typeof memories[ 0 ].emoji ? memories[ 0 ].emoji : 'happy' );
+					}
 
-		this.state.memories = getTodaysMemories();
-		this.state.memory = this.state.memories['memory' + this.state.step];
-		this.state.emoji = this.state.memories['emoji' + this.state.step];
+					this.setState( state );
+				}
+			);
+
+		// Load Tags.
+		db
+			.table( 'tags' )
+			.toArray()
+			.then(
+				(tags) => {
+					this.setState( { tags } );
+				}
+			);
 
 	};
 
@@ -85,13 +99,24 @@ class AddHappyMemories extends React.Component {
 		}
 
 		// Don't save anything, we're at the end now.
-		if ( this.state.step >= 4 ) {
+		if ( this.state.step >= 3 ) {
 			return false;
 		}
 
+		let step = this.state.step;
+
 		let memories = { ...this.state.memories };
-		memories['memory' + this.state.step] = this.memoryRef.current.value;
-		memories['emoji' + this.state.step] = this.state.emoji;
+
+		if ( ! memories[ step ] ) {
+			memories[ step ] = {};
+		}
+
+		memories[ step ] = {
+			id: getMemoryKey( this.state.step ),
+			memory: this.memoryRef.current.value,
+			emoji: this.state.emoji,
+			date: getDate(),
+		};
 
 		this.setState(
 			{
@@ -99,11 +124,15 @@ class AddHappyMemories extends React.Component {
 			}
 		);
 
-		addMemories( memories );
+		addMemory( memories[ step ] );
 
-		exportTags( memories.memory1 );
-		exportTags( memories.memory2 );
-		exportTags( memories.memory3 );
+		let newTags = exportTags( memories[ step ].memory, this.state.tags );
+
+		this.setState(
+			{
+				tags: newTags
+			}
+		);
 
 	};
 
@@ -120,20 +149,19 @@ class AddHappyMemories extends React.Component {
 		// Save the current values.
 		this.formSubmit();
 
-		// Ensure there's a default value for the selected emoji.
-		let emoji = 'happy';
-		if ( this.state.memories['emoji' + step] ) {
-			emoji = this.state.memories['emoji' + step];
+		let state = {
+			step,
+			memory: '',
+			emoji: 'happy',
+		};
+
+		if ( this.state.memories[ step ] ) {
+			state.memory = ( this.state.memories[ step ].memory ? this.state.memories[ step ].memory : '' );
+			state.emoji = ( this.state.memories[ step ].emoji ? this.state.memories[ step ].emoji : 'happy' );
 		}
 
 		// Change the step.
-		this.setState(
-			{
-				step: step,
-				memory: this.state.memories['memory' + step],
-				emoji: emoji,
-			}
-		);
+		this.setState( state );
 
 	};
 
@@ -156,7 +184,7 @@ class AddHappyMemories extends React.Component {
 	getCurrentComponent = () => {
 
 		// Final slide: Submission complete.
-		if ( this.state.step >= 4 ) {
+		if ( this.state.step >= 3 ) {
 
 			let image = openmojiPath( rando( openmojiJoy ) );
 
@@ -174,7 +202,7 @@ class AddHappyMemories extends React.Component {
 		}
 
 		// Ask for a new memory.
-		let id = 'memory' + this.state.step;
+		let id = getMemoryKey( this.state.step );
 
 		return (
 			<React.Fragment>
@@ -204,23 +232,23 @@ class AddHappyMemories extends React.Component {
 		let buttons = [];
 
 		// Next Memory.
-		if ( this.state.step < 3 ) {
+		if ( this.state.step < 2 ) {
 			buttons.push(
 				<button
 					className="next-wizard"
-					onClick={this.nextStep}
-					key={'next'+this.state.step}
+					onClick={ this.nextStep }
+					key={ 'next' + this.state.step }
 				>Next Memory</button>
 			);
 		}
 
 		// Finish the wizard.
-		if ( 3 === this.state.step ) {
+		if ( 2 === this.state.step ) {
 			buttons.push(
 				<button
 					className="next-wizard"
-					onClick={this.nextStep}
-					key={'next'+this.state.step}
+					onClick={ this.nextStep }
+					key={ 'next' + this.state.step}
 				>Finish</button>
 			);
 		}
@@ -233,13 +261,13 @@ class AddHappyMemories extends React.Component {
 	render() {
 
 		return (
-			<form onSubmit={this.formSubmit} className={'form-step'+this.state.step}>
+			<form onSubmit={this.formSubmit} className={ 'form-step' + this.state.step }>
 
 				<nav className="wizard">
-					<button className="step1" onClick={() => { this.setStep( 1 ); }}>1</button>
-					<button className="step2" onClick={() => { this.setStep( 2 ); }}>2</button>
-					<button className="step3" onClick={() => { this.setStep( 3 ); }}>3</button>
-					<button className="step4" onClick={() => { this.setStep( 4 ); }}>Happy</button>
+					<button className="step0" onClick={() => { this.setStep( 0 ); }}>1</button>
+					<button className="step1" onClick={() => { this.setStep( 1 ); }}>2</button>
+					<button className="step2" onClick={() => { this.setStep( 2 ); }}>3</button>
+					<button className="step3" onClick={() => { this.setStep( 3 ); }}>Happy</button>
 				</nav>
 
 				{ this.getCurrentComponent() }
