@@ -1,6 +1,4 @@
 import React from 'react';
-import { getDate } from '../helpers';
-// import { linkTags } from '../tags';
 import { openmojiPath, openmoji } from '../openmoji';
 
 class Memory extends React.Component {
@@ -23,7 +21,7 @@ class Memory extends React.Component {
 			<div className="memory">
 				<img src={openmojiPath( openmoji[ emoji ] )} alt="" />
 				<p>{memory}</p>
-				<span className="date">{getDate( this.props.date )}</span>
+				<span className="date">{ this.props.date }</span>
 			</div>
 		);
 
