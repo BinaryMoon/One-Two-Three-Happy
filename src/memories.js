@@ -1,4 +1,5 @@
-import { getDate } from './helpers';
+import { getToday } from './helpers';
+import db from './database';
 
 
 /**
@@ -6,7 +7,7 @@ import { getDate } from './helpers';
  */
 export function getMemories() {
 
-	let memories = localStorage.getItem( 'memories' );
+	let memories = [];
 
 	if ( memories && memories.length > 0 ) {
 		memories = JSON.parse( memories );
@@ -20,97 +21,27 @@ export function getMemories() {
 
 
 /**
- * Get memories that include the specified tag.
+ * Save a new memory.
  *
- * @param {string} tag Tag to filter by.
+ * @param {object} memory The memory to save/ update.
  */
-export function getMemoriesByTag( tag ) {
+export function addMemory( memory = null ) {
 
-	let memories = getMemories();
-
-	tag = '#' + tag.toLowerCase();
-
-	Object.keys( memories ).map(
-		key => {
-			if ( memories[key].memory1 && ! memories[key].memory1.toLowerCase().includes( tag ) ) { memories[key].memory1 = ''; }
-			if ( memories[key].memory2 && ! memories[key].memory2.toLowerCase().includes( tag ) ) { memories[key].memory2 = ''; }
-			if ( memories[key].memory3 && ! memories[key].memory3.toLowerCase().includes( tag ) ) { memories[key].memory3 = ''; }
-
-			if ( ! memories[key].memory1 && ! memories[key].memory2 && ! memories[key].memory3 ) {
-				delete memories[key];
-			}
-			return true;
-		}
-	);
-
-	return memories;
-
-}
-
-/**
- * Get a list of the memories saved for today only.
- */
-export function getTodaysMemories() {
-
-	let memories = getMemories();
-
-	if ( ! memories ) {
-		return false;
+	if ( null === memory ) {
+		return;
 	}
 
-	// Filter out all the memories except the one that was saved today.
-	memories = memories.filter(
-		function ( memory ) {
-			return memory.prettyDate === getDate();
-		}
-	);
-
-	if ( memories[0] ) {
-		return memories[0];
+	if ( '' === memory.memory ) {
+		return;
 	}
 
-	return false;
+	if ( null === memory.emoji ) {
+		memory.emoji = 'happy';
+	}
 
-}
-
-
-/**
- * Add a new memory.
- *
- * @param {object} newMemories 3 new memories for today.
- */
-export function addMemories( newMemories ) {
-
-	let memories = getMemories();
-	let date = new Date();
-
-	// Filter out todays memory, and keep the rest.
-	memories = memories.filter(
-		function ( memory ) {
-			return memory.prettyDate !== getDate();
-		}
-	);
-
-	newMemories.date = date.getTime();
-	newMemories.prettyDate = getDate();
-
-	memories.push( newMemories );
-
-	saveMemories( memories );
-
-}
-
-
-/**
- * Save the current memories state.
- *
- * @param {object} memories List of all memories.
- */
-export function saveMemories( memories ) {
-
-	memories = sortMemories( memories );
-
-	localStorage.setItem( 'memories', JSON.stringify( memories ) );
+	db
+		.table( 'memories' )
+		.put( memory );
 
 }
 
@@ -160,10 +91,22 @@ export function emptyMemories( memories = null ) {
 		return true;
 	}
 
-	if (1 === memories.length && ! memories[0].memory1 && ! memories[0].memory2 && ! memories[0].memory3 ) {
+	if ( ! memories[0].memory ) {
 		return true;
 	}
 
 	return false;
+
+}
+
+
+/**
+ * Get a key for saving the Wizard tab memory data for each day.
+ *
+ * @param {int} step Current wizard tab.
+ */
+export function getMemoryKey( step ) {
+
+	return getToday() + '-' + step;
 
 }

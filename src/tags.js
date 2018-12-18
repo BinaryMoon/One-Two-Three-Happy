@@ -1,20 +1,6 @@
+import db from './database';
 
 const tagRegex = /#[-_a-z0-9]+/gi;
-
-/**
- * Get a list of all the tags.
- */
-export function getTags() {
-
-	let tags = localStorage.getItem( 'tags' );
-
-	if ( tags && tags.length > 0 ) {
-		return JSON.parse( tags );
-	}
-
-	return [];
-
-}
 
 
 /**
@@ -24,7 +10,7 @@ export function getTags() {
  */
 export function saveTags( tags ) {
 
-	if ( ! tags ) {
+	if ( ! tags && tags.length < 1 ) {
 		return;
 	}
 
@@ -34,7 +20,9 @@ export function saveTags( tags ) {
 		}
 	);
 
-	localStorage.setItem( 'tags', JSON.stringify( tags ) );
+	db.table( 'tags' ).bulkPut( tags );
+
+	return tags;
 
 }
 
@@ -43,30 +31,37 @@ export function saveTags( tags ) {
  * Extract tags from a users memory and then save them.
  *
  * @param {string} text Text containing a memory, and possibly some tags.
+ * @param {object} currentTags List of existing tags.
  */
-export function exportTags( text ) {
+export function exportTags( text, currentTags ) {
 
 	if ( ! text ) {
 		return;
 	}
 
-	let tags = getTags();
 	let matches = text.match( tagRegex );
+	let tags = {};
 
 	if ( ! matches ) {
 		return;
 	}
 
-	// Merge arrays and remove duplicates.
-	tags = [
-		...tags,
-		...matches
+	// Filter out any tags that have already been saved.
+	tags = matches.filter(
+		( key ) => {
+			return currentTags.indexOf( key ) < 0;
+		}
+	);
+
+	if ( tags ) {
+		saveTags( tags );
+	}
+
+	// Merge the currentTags with the newly saved tags so that we can update the tag state.
+	return [
+		...currentTags,
+		...tags
 	];
-
-	// Make array unique.
-	tags = [ ...new Set( tags ) ];
-
-	saveTags( tags );
 
 }
 
