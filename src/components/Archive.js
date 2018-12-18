@@ -10,13 +10,13 @@ class Archive extends React.Component {
 
 	render() {
 
+		// let tags = [ ...this.props.tags ];
+
 		return (
 			<div className="content archive">
 				<h1 dangerouslySetInnerHTML={{__html:this.props.title}}></h1>
-				<Tags />
-				<Memories
-					memories={this.props.memories}
-				/>
+				<Tags tags={this.props.tags} />
+				<Memories memories={this.props.memories} />
 			</div>
 		);
 
