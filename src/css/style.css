@@ -749,14 +749,17 @@ table {
     .content {
       padding: 1.5rem 1.5rem;
       max-width: 100%; } }
-  .content h1, .content h2 {
+  .content .title {
     margin-bottom: 3rem; }
     @media only screen and (max-width: 600px) {
-      .content h1, .content h2 {
+      .content .title {
         font-size: 20px;
         font-size: 1.25rem;
         line-height: 1.5;
         font-weight: bold; } }
+  .content p + h2, .content p + h3 {
+    margin-top: 3rem;
+    margin-bottom: 0.75rem; }
   .content > * {
     max-width: 45rem; }
 
@@ -792,12 +795,12 @@ header {
   @media only screen and (max-width: 782px) {
     header {
       max-width: 100%; } }
-  header .title {
+  header .site-title {
     font-size: 20px;
     font-size: 1.25rem;
     line-height: 1.5; }
     @media only screen and (max-width: 600px) {
-      header .title {
+      header .site-title {
         margin-bottom: 3rem; } }
   header a {
     text-decoration: none;
