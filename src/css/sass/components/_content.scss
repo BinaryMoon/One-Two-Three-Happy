@@ -13,7 +13,7 @@
 
 	}
 
-	h1, h2 {
+	.title {
 
 		margin-bottom: $grid-line-height * 2;
 
@@ -23,6 +23,13 @@
 			font-weight: bold;
 
 		}
+
+	}
+
+	p + h2, p + h3 {
+
+		margin-top: $grid-line-height * 2;
+		margin-bottom: $grid-line-height / 2;
 
 	}
 

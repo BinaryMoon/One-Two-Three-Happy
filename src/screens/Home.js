@@ -11,7 +11,7 @@ class Home extends React.Component {
 			<React.Fragment>
 				<Header></Header>
 				<div className="content home">
-					<h2>What made you happy today?</h2>
+					<h2 className="title">What made you happy today?</h2>
 					<AddHappyMemories />
 				</div>
 			</React.Fragment>
