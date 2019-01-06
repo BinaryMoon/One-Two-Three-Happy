@@ -1,7 +1,6 @@
 .content {
 
 	width: 100%;
-	max-width: 50rem;
 	flex-grow: 1;
 	padding: $grid-line-height ( $grid-gutter );
 	overflow: scroll;
@@ -9,7 +8,6 @@
 	@include for-tablet {
 
 		padding: $grid-line-height ( $grid-gutter / 2 );
-		max-width: 100%;
 
 	}
 
