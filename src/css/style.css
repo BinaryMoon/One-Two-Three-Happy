@@ -541,7 +541,7 @@ button {
   border: none;
   padding: 0.75rem 1.5rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-align: center;
   font-size: 16px;
   font-size: 1rem;
@@ -586,7 +586,7 @@ legend {
   padding: 0 1.5rem;
   text-transform: uppercase;
   font-weight: bold;
-  letter-spacing: 0.1em; }
+  letter-spacing: 0.08em; }
 
 fieldset {
   border: 1px solid black; }
@@ -663,7 +663,7 @@ table {
     font-size: 0.75rem;
     line-height: 1.75;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     padding: 0.75rem 1.5rem;
     text-align: left;
     font-weight: bold; }
@@ -741,14 +741,12 @@ table {
 
 .content {
   width: 100%;
-  max-width: 50rem;
   flex-grow: 1;
   padding: 1.5rem 3rem;
   overflow: scroll; }
   @media only screen and (max-width: 782px) {
     .content {
-      padding: 1.5rem 1.5rem;
-      max-width: 100%; } }
+      padding: 1.5rem 1.5rem; } }
   .content .title {
     margin-bottom: 3rem; }
     @media only screen and (max-width: 600px) {
@@ -783,6 +781,8 @@ table {
       .emoji-list label input:checked + img {
         background: #f2f1f0;
         border-color: #1a1919; }
+      .emoji-list label input:hover + img {
+        background: #f2f1f0; }
 
 header {
   max-width: 20rem;
@@ -811,6 +811,12 @@ header {
     font-size: 12px;
     font-size: 0.75rem;
     line-height: 1.75; }
+  header .meta {
+    font-size: 12px;
+    font-size: 0.75rem;
+    line-height: 1.75;
+    text-transform: uppercase;
+    letter-spacing: 0.08em; }
 
 .memory {
   display: flex;
