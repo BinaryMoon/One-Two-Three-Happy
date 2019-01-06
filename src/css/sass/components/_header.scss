@@ -46,4 +46,10 @@ header {
 
 	}
 
+	.meta {
+
+		@include post-meta-data;
+
+	}
+
 }
