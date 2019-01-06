@@ -13,6 +13,7 @@ const Header = (props) => (
 
 		<section className="about">
 			<p>One Two Three Happy could also be called a Gratitude Journal, or a Happiness Journal. A way to keep track of those things that bring you joy.</p>
+			<p className="meta"><Link to="/privacy-policy/">Privacy Policy</Link></p>
 		</section>
 
 	</header>

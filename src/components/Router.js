@@ -6,8 +6,8 @@ import Home from '../screens/Home';
 import Archives from '../screens/Archives';
 import ArchiveTag from '../screens/ArchiveTag';
 
-// import About from '../screens/About';
 const About = lazy( () => import( '../screens/About' ) );
+const Privacy = lazy( () => import( '../screens/Privacy' ) );
 
 const Router = () => (
 	<BrowserRouter>
@@ -16,6 +16,7 @@ const Router = () => (
 				<Route exact path="/" component={Home} />
 				<Route exact path="/archive/" component={Archives} />
 				<Route exact path="/about/" component={About} />
+				<Route exact path="/privacy-policy/" component={Privacy} />
 				<Route exact path="/tag/:tag/" component={ArchiveTag} />
 				<Route component={NotFound} />
 			</Switch>
