@@ -1,5 +1,6 @@
 Ideas
 
+Sanitize user input with https://github.com/cure53/DOMPurify
 On the happy tab I should check that the happy things have actually been filled out, and link back to the tab(s) that need work.
 Switch storage to indexeddb - maybe with Dexie? https://dexie.org/docs/Tutorial/
 Filter memories by emoji
